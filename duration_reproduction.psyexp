@@ -43,7 +43,7 @@
     <Param val="False" valType="bool" updates="None" name="elSimMode"/>
     <Param val="RIGHT_EYE" valType="str" updates="None" name="elTrackEyes"/>
     <Param val="PUPIL_CR_TRACKING" valType="str" updates="None" name="elTrackingMode"/>
-    <Param val="githubsdt" valType="str" updates="None" name="expName"/>
+    <Param val="duration_reproduction" valType="str" updates="None" name="expName"/>
     <Param val="on Sync" valType="str" updates="None" name="exportHTML"/>
     <Param val="None" valType="str" updates="None" name="eyetracker"/>
     <Param val="127.0.0.1" valType="str" updates="None" name="gpAddress"/>
@@ -596,7 +596,7 @@
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="False" valType="bool" updates="constant" name="flipHoriz"/>
         <Param val="False" valType="bool" updates="constant" name="flipVert"/>
-        <Param val="ins.jpg" valType="str" updates="constant" name="image"/>
+        <Param val="images/instructions.jpg" valType="str" updates="constant" name="image"/>
         <Param val="linear" valType="str" updates="constant" name="interpolate"/>
         <Param val="None" valType="str" updates="constant" name="mask"/>
         <Param val="Ins_image_2" valType="code" updates="None" name="name"/>
@@ -1155,7 +1155,7 @@
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="False" valType="bool" updates="constant" name="flipHoriz"/>
         <Param val="False" valType="bool" updates="constant" name="flipVert"/>
-        <Param val="bank-1300155_640.png" valType="str" updates="constant" name="image"/>
+        <Param val="images/credit-card.png" valType="str" updates="constant" name="image"/>
         <Param val="linear" valType="str" updates="constant" name="interpolate"/>
         <Param val="None" valType="str" updates="constant" name="mask"/>
         <Param val="ccimage" valType="code" updates="None" name="name"/>
@@ -1456,7 +1456,7 @@
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="False" valType="bool" updates="constant" name="flipHoriz"/>
         <Param val="False" valType="bool" updates="constant" name="flipVert"/>
-        <Param val="bank-1300155_640.png" valType="str" updates="constant" name="image"/>
+        <Param val="images/credit-card.png" valType="str" updates="constant" name="image"/>
         <Param val="linear" valType="str" updates="constant" name="interpolate"/>
         <Param val="None" valType="str" updates="constant" name="mask"/>
         <Param val="ccimage_touch" valType="code" updates="None" name="name"/>
@@ -1528,7 +1528,7 @@
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="False" valType="bool" updates="constant" name="flipHoriz"/>
         <Param val="False" valType="bool" updates="constant" name="flipVert"/>
-        <Param val="continue.png" valType="file" updates="constant" name="image"/>
+        <Param val="images/continue-button.png" valType="file" updates="constant" name="image"/>
         <Param val="linear" valType="str" updates="constant" name="interpolate"/>
         <Param val="" valType="str" updates="constant" name="mask"/>
         <Param val="continue_button" valType="code" updates="None" name="name"/>
@@ -1779,7 +1779,7 @@
     <LoopInitiator loopType="TrialHandler" name="trials">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
       <Param name="conditions" updates="None" val="[OrderedDict([('TimeDur', 0.8), ('Coherence1', 0.3), ('TrialType', 'Time')]), OrderedDict([('TimeDur', 0.9), ('Coherence1', 0.7), ('TrialType', 'Time')]), OrderedDict([('TimeDur', 1.0), ('Coherence1', 0.3), ('TrialType', 'Time')])]" valType="str"/>
-      <Param name="conditionsFile" updates="None" val="condition.csv" valType="file"/>
+      <Param name="conditionsFile" updates="None" val="conditions.csv" valType="file"/>
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
       <Param name="isTrials" updates="None" val="True" valType="bool"/>
       <Param name="loopType" updates="None" val="random" valType="str"/>

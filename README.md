@@ -17,15 +17,24 @@ The example task is a motion-duration reproduction task built with random-dot ki
 
 ## Contents
 
-| File | What it is |
-|---|---|
-| `githubsdt.psyexp` | PsychoPy Builder source of the experiment. Edit this. |
-| `index.html`, `githubsdt.js`, `githubsdt-legacy-browsers.js` | The online version exported from Builder (*File → Export HTML*). |
-| `lib/` | PsychoJS 2023.2.3 library files, copied in so the experiment does not depend on Pavlovia. |
-| `dots.js` | `RDK` class that draws the moving dots on an HTML canvas. Loaded as a resource. |
-| `condition.csv` | Trial list: `TimeDur` (s), `Coherence1` (0–1), `TrialType`. |
-| `datapipe-exit-code.js` | Code that saves the data to DataPipe. Paste it into your own experiments. |
-| `bank-1300155_640.png`, `ins.jpg`, `continue.png` | Credit-card image for screen calibration, instruction image, touch-screen button. |
+```
+SDTOSF/
+├── index.html                              # entry page served by GitHub Pages
+├── duration_reproduction.psyexp            # PsychoPy Builder source (edit this)
+├── duration_reproduction.js                # exported by Builder (File → Export HTML)
+├── duration_reproduction-legacy-browsers.js
+├── conditions.csv                          # trial list: TimeDur (s), Coherence1 (0–1), TrialType
+├── dots.js                                 # RDK class that draws the moving dots on a canvas
+├── images/
+│   ├── credit-card.png                     # screen calibration
+│   ├── instructions.jpg
+│   └── continue-button.png                 # touch-screen version
+├── lib/                                    # PsychoJS 2023.2.3, so nothing depends on Pavlovia
+└── snippets/
+    └── datapipe-exit-code.js               # data-saving code to reuse in your own experiments
+```
+
+`index.html`, the two `duration_reproduction*.js` files and `lib/` are what runs in the browser. Builder writes the `.js` files next to the `.psyexp`, which is why everything sits at the top level: GitHub Pages can serve the repository root as it is.
 
 ## The example task
 
@@ -41,7 +50,7 @@ The example task is a motion-duration reproduction task built with random-dot ki
 
 Besides the standard PsychoPy columns, the data file has `keyDuration` (reproduced duration, ms; `9999` = no response), `FeedbackID_T` (0 = no response, 1 = far too early … 3 = correct … 5 = far too late), `direction` (motion direction, degrees) and `Block_id`.
 
-`condition.csv` only has 3 rows, which makes it a short demo. Add rows (or repeat the loop) for a real study.
+`conditions.csv` only has 3 rows, which makes it a short demo. Add rows (or repeat the loop) for a real study.
 
 ## Tutorial: put it online
 
@@ -59,15 +68,15 @@ Fork this repository on GitHub, or create a new repository and upload the files.
 
 ### 3. Paste the experiment ID into the code
 
-Open `githubsdt.psyexp` in PsychoPy, go to the `exit` routine and open the code component `code_3` (*Begin JS Routine*). Replace the placeholder:
+Open `duration_reproduction.psyexp` in PsychoPy, go to the `exit` routine and open the code component `code_3` (*Begin JS Routine*). Replace the placeholder:
 
 ```js
 const DATAPIPE_EXPERIMENT_ID = 'YOUR_DATAPIPE_ID';
 ```
 
-Then export again with *File → Export HTML*. Builder rewrites `index.html`, `githubsdt.js` and `githubsdt-legacy-browsers.js`.
+Then export again with *File → Export HTML*. Builder rewrites `index.html`, `duration_reproduction.js` and `duration_reproduction-legacy-browsers.js`.
 
-If you do not have PsychoPy installed, you can make the same change by hand in `githubsdt.js` and `githubsdt-legacy-browsers.js` (search for `YOUR_DATAPIPE_ID`). But the next Builder export will overwrite those files, so change the `.psyexp` as well.
+If you do not have PsychoPy installed, you can make the same change by hand in `duration_reproduction.js` and `duration_reproduction-legacy-browsers.js` (search for `YOUR_DATAPIPE_ID`). But the next Builder export will overwrite those files, so change the `.psyexp` as well.
 
 ### 4. Turn on GitHub Pages
 
@@ -90,7 +99,7 @@ Run through the whole experiment once and check that a new `.csv` file shows up 
 ## Using this setup for your own experiment
 
 1. Add a final routine to your Builder experiment (for example `exit`). Give it a text component such as *"Please wait while we save your results..."* that has no fixed duration.
-2. Add a code component to that routine and set *Code Type* to **JS**. Paste the contents of `datapipe-exit-code.js` into *Begin JS Routine* and fill in your experiment ID.
+2. Add a code component to that routine and set *Code Type* to **JS**. Paste the contents of `snippets/datapipe-exit-code.js` into *Begin JS Routine* and fill in your experiment ID.
 3. Export to HTML. Copy the PsychoJS `lib/` folder next to `index.html`, if the export did not create it. Then follow steps 4–5 above.
 
 How the saving code works:
