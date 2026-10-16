@@ -19,22 +19,21 @@ The example task is a motion-duration reproduction task built with random-dot ki
 
 ```
 SDTOSF/
-├── index.html                              # entry page served by GitHub Pages
-├── duration_reproduction.psyexp            # PsychoPy Builder source (edit this)
-├── duration_reproduction.js                # exported by Builder (File → Export HTML)
-├── duration_reproduction-legacy-browsers.js
-├── conditions.csv                          # trial list: TimeDur (s), Coherence1 (0–1), TrialType
-├── dots.js                                 # RDK class that draws the moving dots on a canvas
-├── images/
-│   ├── credit-card.png                     # screen calibration
-│   ├── instructions.jpg
-│   └── continue-button.png                 # touch-screen version
-├── lib/                                    # PsychoJS 2023.2.3, so nothing depends on Pavlovia
+├── index.html                                  # redirects to experiment/
+├── experiment/
+│   ├── duration_reproduction.psyexp            # PsychoPy Builder source (edit this)
+│   ├── index.html                              # exported by Builder (File → Export HTML)
+│   ├── duration_reproduction.js                # exported
+│   ├── duration_reproduction-legacy-browsers.js  # exported
+│   ├── conditions.csv                          # trial list: TimeDur (s), Coherence1 (0–1), TrialType
+│   ├── dots.js                                 # RDK class that draws the moving dots on a canvas
+│   ├── images/                                 # credit card (calibration), instructions, touch button
+│   └── lib/                                    # PsychoJS 2023.2.3, so nothing depends on Pavlovia
 └── snippets/
-    └── datapipe-exit-code.js               # data-saving code to reuse in your own experiments
+    └── datapipe-exit-code.js                   # data-saving code to reuse in your own experiments
 ```
 
-`index.html`, the two `duration_reproduction*.js` files and `lib/` are what runs in the browser. Builder writes the `.js` files next to the `.psyexp`, which is why everything sits at the top level: GitHub Pages can serve the repository root as it is.
+Builder exports the online files next to the `.psyexp`, so the whole experiment lives in `experiment/`. The `index.html` at the top level only forwards visitors to `experiment/`, and keeps any URL parameters.
 
 ## The example task
 
@@ -68,7 +67,7 @@ Fork this repository on GitHub, or create a new repository and upload the files.
 
 ### 3. Paste the experiment ID into the code
 
-Open `duration_reproduction.psyexp` in PsychoPy, go to the `exit` routine and open the code component `code_3` (*Begin JS Routine*). Replace the placeholder:
+Open `experiment/duration_reproduction.psyexp` in PsychoPy, go to the `exit` routine and open the code component `code_3` (*Begin JS Routine*). Replace the placeholder:
 
 ```js
 const DATAPIPE_EXPERIMENT_ID = 'YOUR_DATAPIPE_ID';
@@ -86,7 +85,7 @@ In your repository on GitHub: *Settings → Pages → Build and deployment*. Set
 https://<your-github-username>.github.io/<repository-name>/
 ```
 
-That is the link you send to participants.
+That is the link you send to participants. It forwards to `.../<repository-name>/experiment/`.
 
 ### 5. Test it
 
